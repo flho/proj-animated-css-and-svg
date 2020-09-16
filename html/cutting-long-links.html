@@ -1,0 +1,65 @@
+<table class="td-en-pourcent">
+     <tbody>
+          <tr>
+               <td>
+                    <a class="lien-a-couper-pour-td-en-pourcent" href="https://www.ratp.fr/itineraires/Aulnay-Sous-Bois%20(SNCF)%2C%20Aulnay-sous-Bois%26Nanterre-Pr%C3%A9fecture%20(RER)%2C%20Nanterre">https://www.ratp.fr/itineraires/Aulnay-Sous-Bois%20(SNCF)%2C%20Aulnay-sous-Bois%26Nanterre-Pr%C3%A9fecture%20(RER)%2C%20Nanterre</a>
+               </td>
+               <td>(vide)</td>
+          </tr>
+     </tbody>
+</table>
+
+<table class="td-en-pixel">
+     <tbody>
+          <tr>
+               <td class="container-lien-a-couper-pour-td-en-pixel">
+                    <a href="https://www.ratp.fr/itineraires/Aulnay-Sous-Bois%20(SNCF)%2C%20Aulnay-sous-Bois%26Nanterre-Pr%C3%A9fecture%20(RER)%2C%20Nanterre">https://www.ratp.fr/itineraires/Aulnay-Sous-Bois%20(SNCF)%2C%20Aulnay-sous-Bois%26Nanterre-Pr%C3%A9fecture%20(RER)%2C%20Nanterre</a>
+               </td>
+               <td>(vide)</td>
+          </tr>
+     </tbody>
+</table>
+
+
+
+<style>
+table.td-en-pourcent {
+     width: 100%;
+}
+table.td-en-pourcent td {
+  width: 33%;
+  border:solid 1px grey;
+}
+a.lien-a-couper-pour-td-en-pourcent {
+  word-wrap:break-word;
+  word-break:break-word;
+  font-size:1em;
+  height:1.4em;
+  overflow: hidden;
+  display:inline-block;
+  position: relative;
+  padding-right: 1em;
+}
+a.lien-a-couper-pour-td-en-pourcent::after {
+  content: "...";
+  position: absolute;
+  top:0;
+  right: 0;
+}
+table.td-en-pixel {
+     width: 600px;
+}
+table.td-en-pixel td {
+     width: 300px;
+     border:solid 1px grey;
+}
+td.container-lien-a-couper-pour-td-en-pixel {
+	display: block;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	word-break: normal \9;
+	word-wrap: normal;
+}
+
+</style>

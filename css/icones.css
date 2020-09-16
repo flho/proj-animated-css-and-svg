@@ -1,0 +1,33 @@
+.icone-certificate {
+  width: 18px;
+  fill: blue;
+  /*reconnu car le svg est dans le html*/
+  position: relative;
+  top: 3px;
+}
+
+.communaute-officielle::after, .ico-communaute-officielle {
+  content: "";
+  width: 18px;
+  height: 18px;
+  margin-left: 6px;
+  display: inline-block;
+  fill: blue;
+  /*pas de reconnaissance*/
+  background-image: url("../images/ico-communaute-officielle.svg");
+  background-repeat: no-repeat;
+  background-size: auto 18px;
+  background-position: center;
+  position: relative;
+  top: 5px;
+}
+
+/* ou bien : 
+<i class="icon-certificate"></i>
+https://fontawesome.com/v3.2.1/icon/certificate
+
+ou :
+<i class="icon-ok-sign"></i>
+https://fontawesome.com/v3.2.1/icon/ok-sign
+
+*/

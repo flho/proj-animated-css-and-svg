@@ -1,0 +1,407 @@
+// couleurs :
+$bleu_clair: #005bbb;
+$bleu_fonce: #001a70;
+$orange_fonce: #fe5815;
+$orange_clair: #ffa02f;
+// === PODIUM ===
+$hauteur-podium-seul: 419px;
+$hauteur-podium: $hauteur-podium-seul - 42px;
+/*
+
+.block_question_ranking
++ + .block_question_reponse // seulement pour le ranking par question
++ + + + .block_question
++ + .block_ranking
++ + + + .podium
+
+*/
+
+// 1. bloc question
+.block_question_ranking {
+     position: relative;
+     height: auto;//;
+     // pour coller à la case dans projection :
+     .intranet-live-event-portlet-projection & {
+          margin-right: -17px;
+          margin-bottom: -28px;
+          margin-left: -17px;
+     }
+     .block_question_reponse {//cartouche bleu
+          position: relative;
+      }
+} 
+.block_ranking {
+     position: relative;
+     //background-color: $bleu_clair;
+     background-color: white;
+     height: $hauteur-podium-seul;
+     min-height: $hauteur-podium-seul;
+}
+
+// 2. bloc podium
+$largeur_col_1: 321px;
+$largeur_col_2: 282px;
+$largeur_col_3: 282px;
+$left_col_1: 244px;
+$left_col_2: 2px;
+$left_col_3: 527px;
+$coef_reduction: 0.84;
+
+// 2a.bloc podium vertical
+.block_ranking:not(.horizontal) {
+     .podium {
+          margin: 0 auto;
+          width: 808px;
+          height: inherit;
+          position: relative;
+          overflow: hidden;
+          h3,p {
+               word-wrap: break-word;//coupe les noms trop longs
+          }
+          .winner {
+               position: absolute;
+               width: inherit;
+               height: 245px;
+               z-index: 8;
+               transition: all 0.5s ease-in-out;
+               .winner-inner {
+                    width: inherit;
+                    height: inherit;
+                    padding: 20px 30px;
+                    display: table-cell;
+                    text-align:center;
+               }
+               &.perso .winner-inner {
+                    vertical-align:bottom;
+                    h3 {
+                         font-size: 20px !important;//surcharge un #
+                    }
+               }
+               &:not(.perso) .winner-inner {
+                    vertical-align: middle;
+                    h3 {
+                         font-size: 30px !important;//surcharge un #
+                    }
+               }
+               .chiffre-du-podium {
+                    width: 100%;
+                    height: 100%;//donc égale à largeur
+                    position: absolute;
+                    top: 235px;
+                    opacity: 0;
+                    background-size: 90% auto;
+                    transition: all 0.4s ease-in;
+                    transition-delay: 2.5s;
+                    transform: rotate(-90deg);
+               }
+               &.descend {
+                    transform: translateY(300px);//285px
+                    .chiffre-du-podium {
+                         transform: rotate(0deg);
+                         opacity: 1;
+                    }
+               }
+               h3 {
+                    width: inherit;
+                    color: $bleu_clair;
+                    display: block;
+                    text-align: center;
+                    height: auto;
+                    width:auto;
+                    font-weight: bold;
+               }
+               &.perso {
+                    h3 {
+                         font-size: 20px !important;
+                         margin-bottom:5px;
+                    }
+               } 
+          }
+          .podium-block {
+               position: absolute;
+               height: inherit;
+               overflow: hidden;
+               img.podium-block-img {
+                    position: absolute;
+                    transition: all 0.5s ease-in-out;
+                    &.monte {
+                         transform: translateY(-915px);
+                    }
+               }
+               &.block-1 {
+                    left: $left_col_1;
+                    width: $largeur_col_1;
+                    .winner {
+                         top: -312px;
+                         transition-delay: 1.8s;
+                         &:not(.perso) {
+                              background: url("../codepen-assets/laurier.png") center 15px no-repeat;
+                              background-size: 270px auto;
+                         }
+                         .chiffre-du-podium {
+                              background: url("../codepen-assets/chiffres-01.png") center 20% no-repeat;
+                              z-index: 4;
+                             // left: 87px;
+                         }
+                    }
+                    img.podium-block-img {
+                         bottom: -1375px;
+                         transition-delay: 0s;
+                         z-index: 1;
+                    }
+                    .bas-du-podium {
+                         background: url("../codepen-assets/bas-du-podium-chiffre-1.png") 0 0 no-repeat;
+                         z-index: 2;
+                    }
+               }
+               &.block-2 {
+                    left: $left_col_2;
+                    width: $largeur_col_2;
+                    .winner {
+                         top: -267px;
+                         transition-delay: 2.2s;
+                         .chiffre-du-podium {
+                              background: url("../codepen-assets/chiffres-02.png") 65% -10% no-repeat;
+                              z-index: 4;
+                             // left: 68px;
+                         }
+                    }
+                    img.podium-block-img {
+                         bottom: -1375px;
+                         transition-delay: 0.8s;
+                         z-index:3;
+                    }
+                    .bas-du-podium {
+                         background: url("../codepen-assets/bas-du-podium-chiffre-2.png") -1px 0 no-repeat;
+                         z-index: 4;
+                    }
+               }
+               &.block-3 {
+                    left: $left_col_3;
+                    width: $largeur_col_3;
+                    .winner {
+                         top: -230px;
+                         right: 0;
+                         transition-delay: 2.4s;
+                         .chiffre-du-podium {
+                              background: url("../codepen-assets/chiffres-03.png") 33% -22% no-repeat;
+                              z-index: 6;
+                         }
+                    }
+                    img.podium-block-img {
+                         bottom: -1370px;
+                         right: 0;
+                         transition-delay: 1.6s;
+                         z-index: 5;
+                    }
+                    .bas-du-podium {
+                         background: url("../codepen-assets/bas-du-podium-chiffre-3.png") 0 0 no-repeat;
+                         z-index: 6;
+                    }
+               }
+          }
+          .bas-du-podium {
+               width: 100%;
+               height: 90px;
+               position: absolute;
+               bottom: -40px;
+               left: 0;
+               z-index: 5;
+          }
+     }
+
+     // 3. bloc podium avec une colonne gauche (ecran "mon placement")
+     .mon-classement {
+          float: left;
+          width: 0%;
+          opacity:0;
+          height: inherit;
+          background: url("../codepen-assets/bulle-demi.png") center 170px no-repeat;
+          transition: all 0.5s ease-in-out;
+          transition-delay: 1.5s;
+          &.deforme {
+               width: 26%;
+               opacity:1;
+          }
+          & ~ .podium {
+               float: left;
+               width: 73%;
+               margin: 0;
+               margin-left: 1%;
+               .podium-block {
+                    img.podium-block-img {
+                         width: 100%;
+                         &.monte {
+                              transform: translateY(-1020px);
+                         }
+                    }
+                    &.block-1 {
+                         left: $coef_reduction * $left_col_1;
+                         width: $coef_reduction * $largeur_col_1;
+                         .chiffre-du-podium {
+                              background-size: 45% auto !important;
+                         }
+                    }
+                    &.block-2 {
+                         left: $coef_reduction * $left_col_2;
+                         width: $coef_reduction * $largeur_col_2;
+                         .chiffre-du-podium {
+                              background-size: 60% auto !important;
+                         }
+                    }
+                    &.block-3 {
+                         left: $coef_reduction * $left_col_3;
+                         width: $coef_reduction * $largeur_col_3;
+                         .chiffre-du-podium {
+                              background-size: 60% auto !important;
+                         }
+                    }
+               }
+          }
+          .mon-classement-inner {//pour centrer verticalement le classement de l'avatar
+               display: table-cell;
+               vertical-align: middle;
+               height:inherit;
+               width:inherit;
+               text-align: center;
+               p {//text "mon classement"
+                    color: $bleu_clair;
+                    font-weight: bold;
+                    font-size: 20px;
+                    margin-top: 6px;
+                    
+               }
+               h3 {
+                    color: $bleu_clair;
+                    font-size: 60px !important;
+                    font-weight: bold;
+               }
+          }
+     }
+} 
+
+// 2b.bloc podium horizontal
+.block_ranking.horizontal {
+     padding-top: 20px;
+     .podium {
+          img.podium-block-img {
+               display: none;
+          }
+          h3 {
+               color: $bleu_clair;
+               text-align: left !important;
+               font-weight: bold;
+               display: inline-block;
+          }
+          .podium-block {
+               width: auto !important;
+               text-align: left;
+               //border-bottom: solid 1px $gris_ombre;
+               .winner {
+                    padding: 20px 20px 20px 50px;
+                    margin-left: 20px;
+                    background-size: auto 40px !important;
+                    transition: all 0.5s ease-in-out;
+                    position: relative;
+                    left: -1000px;
+                    &.descend {
+                         transform: translateX(1000px);
+                    }
+               }
+               &.block-1 {
+                    .winner {
+                         transition-delay: 0.5s;
+                         background: url("../codepen-assets/hor-chiffre-1.png") 0 center no-repeat;
+                         background-size: 100px auto !important;
+                         padding: 40px 40px 40px 110px;
+                    }
+               }
+               &.block-2 {
+                    .winner {
+                         transition-delay: 1s;
+                         background: url("../codepen-assets/hor-chiffre-2.png") 0 center no-repeat;
+                         background-size: 80px auto !important;
+                         padding: 30px 30px 30px 90px;
+                         margin-left: 28px;
+                    }
+               }
+               &.block-3 {
+                    .winner {
+                         transition-delay: 1.5s;
+                         background: url("../codepen-assets/hor-chiffre-3.png") 0 center no-repeat;
+                         background-size: 60px auto !important;
+                         padding: 25px 25px 25px 70px;
+                         margin-left: 38px;
+                    }
+               }
+          }
+     }
+     //TODO: refactorer ce code copié-collé :
+     .mon-classement {
+          float: left;
+          width: 0%;
+          height: inherit;
+          opacity:0;
+          //height: calc(100% - 20px);//a cause du padding-top
+          //background-image: url("../codepen-assets/bulle-demi.png");
+          //background-repeat: no-repeat;
+          //background-position: -1000px 60px;
+          transition: all 0.5s ease-in-out;
+          transition-delay: 1.5s;
+          .mon-classement-inner {
+               transform: translateY(100px);
+               padding: 0 30px;
+               text-align: center;
+               h3,p {
+                    color: $bleu_clair;
+                    font-weight: bold;
+               }
+               h3 {
+                    font-size: 60px !important;
+               }
+               p {
+                    font-size: 22px;
+               }
+          }
+          &.deforme {
+               width: 26%;
+              // background-position: center 60px;
+               opacity:1;
+          }
+          & ~ .podium {
+               float: left;
+               width: 73%;
+               margin: 0;
+               margin-left: 1%;
+          }
+     }
+     // /TODO
+} 
+
+//classement sur écran administrateur :
+.intranet-live-event-portlet-presentation {
+     .classement {
+          text-align: center;
+          vertical-align: top !important;
+          .user-icon {
+               background-color: $bleu_fonce;
+               span {
+                    color: $orange_clair;
+                    font-weight: bold;
+                    font-size: 130%;
+               }
+          }
+          .user-icon-xxl {
+               height: 80px;
+               line-height: 90px;
+               width: 80px;
+          }
+     }
+}
+
+// selectionner un groupe :
+.choisir-groupe-submit-wrapper {
+     padding-right: 30px;
+}
+
+

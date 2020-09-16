@@ -1,0 +1,29 @@
+body {
+     background-color: #005bbb;
+}
+img {
+     width:200px;
+     vertical-align: middle;
+}
+p,h3,ul li,a,legend {
+     color: white;
+     font-family: "roboto";
+     font-size: 120%;
+}
+ul.horizontal {
+     height: auto;
+     overflow: hidden;
+     list-style-type: none;
+     li {
+          float: left;
+          border: solid 1px white;
+          padding: 0.5em;
+          margin-right: 0.2em;
+     }
+}
+.clip-podium-svg {
+     clip-path: url(#podium);
+}
+.clip-etoile-svg {
+     clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%); 
+}

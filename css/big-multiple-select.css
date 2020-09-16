@@ -1,0 +1,18 @@
+.big-multiple-select  {
+	border-radius: 30px;
+	border:solid 3px grey;
+	overflow: hidden;
+	margin:1em auto;
+	width: 60%;
+}
+.big-multiple-select > .form-control {
+	scrollbar-width: thin;
+	text-align: center;
+	height: 100%;
+	padding-left: 0;
+	padding-right: 0;
+}
+.big-multiple-select  > .form-control option {
+	font-size: 2em;
+	padding: 10px;
+}

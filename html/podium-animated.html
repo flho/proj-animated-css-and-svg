@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="../css/podium-animated.css">
+	<title>podium</title>
+</head>
+<body>
+
+<div class="block_question_ranking">
+	<div class="block_ranking ">
+
+		<div class="podium">
+			
+				<div class="podium-block block-1">
+					<div class="winner">
+						<div class="winner-inner">
+							<h3>Groupe E</h3>
+							
+						</div>
+						<div class="chiffre-du-podium"></div>
+					</div>
+					<img class="podium-block-img" src="../images/podium-chiffre-1.svg">
+					<div class="bas-du-podium"></div>
+				</div>
+			
+				<div class="podium-block block-2">
+					<div class="winner">
+						<div class="winner-inner">
+							<h3>Groupe A</h3>
+							
+						</div>
+						<div class="chiffre-du-podium"></div>
+					</div>
+					<img class="podium-block-img" src="../images/podium-chiffre-2.svg">
+					<div class="bas-du-podium"></div>
+				</div>
+			
+				<div class="podium-block block-3">
+					<div class="winner">
+						<div class="winner-inner">
+							<h3>Groupe F</h3>
+							
+						</div>
+						<div class="chiffre-du-podium"></div>
+					</div>
+					<img class="podium-block-img" src="../images/podium-chiffre-3.svg">
+					<div class="bas-du-podium"></div>
+				</div>
+			
+		</div>
+		
+	</div>
+</div>
+<script>
+	window.addEventListener("DOMContentLoaded", function() {
+		// console.log("DOM entièrement chargé et analysé");
+		var blockList = document.getElementsByClassName('podium-block-img');
+		for (let item of blockList) {
+			item.classList.add('monte');
+		}
+
+		var winnerList = document.getElementsByClassName('winner');
+		for (let item of winnerList) {
+			item.classList.add('descend');
+		}
+
+		// var classementList = document.getElementsByClassName('mon-classement');
+		// for (let item of classementList) {
+		// 	item.classList.add('deforme');
+		// }
+	});
+</script>
+</body>
+<!-- <aui:script use="aui-base, aui-node">
+
+	AUI().ready('aui-base', function(A){ 
+		A.all('.podium-block-img').each(function (item) {
+			item.addClass('monte');
+		});
+		
+		A.all('.winner').each(function (item) {
+			item.addClass('descend');
+		});
+
+		A.all('.mon-classement').each(function (item) {
+			item.addClass('deforme');
+		});
+	});
+
+</aui:script> -->
+</html>

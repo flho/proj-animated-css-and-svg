@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="../css/podium-images.css">
+	<title>podium</title>
+</head>
+<body>
+	<div class="podium">
+		<div class="podium-inner">
+
+			<div class="podium-block block-1">
+				<div class="winner">
+					<h3>Marc Bertrand</h3>
+					<!-- TODO:prendre code "avatar" avec class "avatae-big" -->
+					<div class="user-icon-color-0 avatar-big  user-icon user-icon-default">
+						<span>MB</span>
+					</div>
+					<!-- /TODO -->
+				</div>
+				<img class="podium-block-img" src="../images/podium-chiffre-1.svg"/>
+				<div class="bas-du-podium"></div>
+			</div>
+			<div class="podium-block block-2">
+				<div class="winner">
+					<h3>Cécile Gros</h3>
+					<!-- TODO:prendre code "avatar" avec class "avatae-big" -->
+					<div class="user-icon-color-0 avatar-big  user-icon user-icon-default">
+						<span>CG</span>
+					</div>
+					<!-- /TODO -->
+				</div>
+				<img class="podium-block-img" src="../images/podium-chiffre-2.svg"/>
+				<div class="bas-du-podium"></div>
+			</div>
+			<div class="podium-block block-3">
+				<div class="winner">
+					<h3>Paul Dupont</h3>
+					<!-- TODO:prendre code "avatar" avec class "avatae-big" -->
+					<div class="user-icon-color-0 avatar-big  user-icon user-icon-default">
+						<span>PD</span>
+					</div>
+					<!-- /TODO -->
+
+				</div>
+				<img class="podium-block-img" src="../images/podium-chiffre-3.svg">
+				<div class="bas-du-podium"></div>
+			</div>
+		</div>
+	</div>
+	<!-- masque svg : caduque -->
+	<svg>
+		<defs>
+			<clipPath id="podium" clipPathUnits="objectBoundingBox">
+				<polygon points="0.102,0.594 0.297,0.595 0.349,0.58 0.349,0.577 0.4,0.591 0.604,0.591 0.653,0.58,0.705,0.598 0.897,0.598 1,0.561 1,0.56 1,0 0,0 0,0.563"></polygon>
+			</clipPath>
+		</defs>
+	</svg>
+
+<script>
+	window.addEventListener("DOMContentLoaded", function() {
+		// console.log("DOM entièrement chargé et analysé");
+		var blockList = document.getElementsByClassName('podium-block-img');
+		for (let item of blockList) {
+			item.classList.add('monte');
+		}
+
+		var winnerList = document.getElementsByClassName('winner');
+		for (let winner of winnerList) {
+			winner.classList.add('descend');
+		}
+	});
+</script>
+</body>
+</html>

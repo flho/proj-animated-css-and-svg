@@ -1,0 +1,101 @@
+$hauteur-podium: 500px;
+
+.podium {
+     margin: 0 auto;
+     width: 809px;
+     height: $hauteur-podium;
+     position: relative;
+     overflow: hidden;
+	.podium-block {
+          position: absolute;
+          height: $hauteur-podium;
+          overflow: hidden;
+          img.podium-block-img {
+               position: absolute;
+               transition: all 0.5s ease-in-out;
+               &.monte {
+                    transform: translateY(-1000px);
+               }
+          }
+          &.block-1 {
+               left: 244px;
+               width: 321px;
+               img.podium-block-img {
+                    bottom: -1375px;
+                    transition-delay: 0;
+                    z-index: 1;
+               }
+               .bas-du-podium {
+                    background: url(../img/bas-du-podium-chiffre-1.png) 0 0 no-repeat;
+                    z-index: 2;
+               }
+               .winner {
+                    top: -1000px;
+                    transition-delay: 2s;
+               }
+          }
+          &.block-2 {
+               left: 1px;
+               width: 282px;
+               img.podium-block-img {
+                    bottom: -1375px;
+                    transition-delay: 0.8s;
+                    z-index:3;
+               }
+               .bas-du-podium {
+                    background: url(../img/bas-du-podium-chiffre-2.png) -1px 0 no-repeat;
+                    z-index: 4;
+               }
+               .winner {
+                    // top:46px;
+                    top: -954px;
+                    transition-delay: 2.2s;
+               }
+          }
+          &.block-3 {
+               left: 528px;
+               width: 282px;
+               .winner {
+                    // top:85px;
+                    top: -915px;
+                    transition-delay: 2.6s;
+               }
+               img.podium-block-img {
+                    bottom: -1370px;
+                    transition-delay: 1.6s;
+                    z-index: 5;
+               }
+               .bas-du-podium {
+                    background: url(../img/bas-du-podium-chiffre-3.png) 0 0 no-repeat;
+                    z-index: 6;
+               }
+          }
+          .winner {
+               position: relative;
+               height: 200px;
+               text-align: center;
+               z-index: 8;
+               transition: all 0.5s ease-in-out;
+               &.descend {
+                    transform: translateY(1000px);
+               }
+               .avatar-big {
+                    width: 150px;
+                    height: 150px;
+                    border-radius: 50%;
+                    border:solid 3px brown;
+                    display:inline-block;
+                    background-color: white;
+               }
+          }
+     }
+     .bas-du-podium {
+          width: 100%;
+          height: 90px;
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          z-index: 5;
+     }
+
+}

@@ -1,0 +1,85 @@
+.podium {
+  margin: 0 auto;
+  width: 500px;
+  display: table;
+}
+
+.podium .podium-block {
+  width: 33%;
+  display: table-cell;
+}
+
+.podium .podium-block.block-2 {
+  height: 118px;
+}
+
+.podium .podium-block.block-1 {
+  height: 157px;
+}
+
+.podium .podium-block.block-3 {
+  height: 78px;
+}
+
+.podium .podium-block > div {
+  float: left;
+}
+
+.podium .podium-block [class^="podium-block"] {
+  height: 100%;
+}
+
+.podium .podium-block .podium-block-left {
+  background-color: #82AFDE;
+  width: 28%;
+}
+
+.podium .podium-block .podium-block-center {
+  background-color: #001A70;
+  width: 44%;
+  text-align: center;
+}
+
+.podium .podium-block .podium-block-center strong {
+  display: block;
+  margin-top: 15px;
+}
+
+.podium .podium-block .podium-block-right {
+  background-color: #005BBB;
+  width: 28%;
+}
+
+.podium .socle {
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  position: relative;
+  top: 15px;
+}
+
+.podium .socle > div {
+  float: left;
+}
+
+.podium .socle .socle-center {
+  background-color: #FFA02F;
+  height: 30px;
+  width: calc(100% - 60px);
+}
+
+.podium .socle .socle-left {
+  width: 0;
+  height: 0;
+  border-top: 15px solid transparent;
+  border-right: 30px solid #FFA02F;
+  border-bottom: 15px solid transparent;
+}
+
+.podium .socle .socle-right {
+  width: 0;
+  height: 0;
+  border-top: 15px solid transparent;
+  border-left: 30px solid #FFA02F;
+  border-bottom: 15px solid transparent;
+}

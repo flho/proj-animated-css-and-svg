@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="../css/masque-svg.css">
+	<title>masque svg</title>
+</head>
+<body>
+	<ul class="horizontal">
+		<li>
+			<img src="http://htbam.fr/codepen-assets/couronne-01.png" class="clip-podium-svg">
+			<legend>masquage par figure svg (url)</legend>
+		</li>
+		<li>
+			<img src="http://htbam.fr/codepen-assets/couronne-01.png" class="clip-etoile-svg">
+			<legend>masquage par clipPath direct</legend>
+		</li>
+	</ul>
+	
+	<hr/>
+
+	<h3>Sources : </h3>
+	<ul>
+		<li><a href="https://css-tricks.com/clipping-masking-css/">css-tricks: Clipping and Masking in CSS</a></a></li>
+		<li><a href="https://developer.mozilla.org/fr/docs/Web/SVG/Tutoriel/D%C3%A9coupages_et_masquages">Mozilla: Découpages et masquages</a></li>
+		<li><a href="https://codepen.io/yoksel/full/fsdbu/">Yoksel: CSS and SVG Masks</a></li>
+		<li><a href="https://bennettfeely.com/clippy/">CSS clip-path maker</a></li>
+	</ul>
+	
+
+	<!-- sources svg :  -->
+	<svg>
+		<defs>
+			<clipPath id="podium" clipPathUnits="objectBoundingBox">
+				<polygon points="0.102,0.594 0.297,0.595 0.349,0.58 0.349,0.577 0.4,0.591 0.604,0.591 0.653,0.58 
+0.705,0.598 0.897,0.598 1,0.561 1,0.56 1,0 0,0 0,0.563 "/>
+			</clipPath>
+		</defs>
+	</svg>
+</body>

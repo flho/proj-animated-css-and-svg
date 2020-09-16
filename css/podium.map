@@ -1,0 +1,12 @@
+{
+	"version": 3,
+	"file": "podium.css",
+	"sources": [
+		"../sass/podium.scss"
+	],
+	"sourcesContent": [
+		".podium-block-left {\r\n\tbackground-color: #82AFDE;\r\n}\r\n.podium-block-center {\r\n\tbackground-color: #001A70;\r\n}\r\n.podium-block-right {\r\n\tbackground-color: #005BBB;\r\n}\r\n.podium-block-1 {\r\n\tposition: relative;\r\n}"
+	],
+	"names": [],
+	"mappings": ";AAAA,AAAA,kBAAkB,CAAC;EAClB,gBAAgB,EAAE,OAAO;CACzB;;;AACD,AAAA,oBAAoB,CAAC;EACpB,gBAAgB,EAAE,OAAO;CACzB;;;AACD,AAAA,mBAAmB,CAAC;EACnB,gBAAgB,EAAE,OAAO;CACzB;;;AACD,AAAA,eAAe,CAAC;EACf,QAAQ,EAAE,QAAQ;CAClB"
+}

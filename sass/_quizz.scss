@@ -1,0 +1,495 @@
+// === PODIUM ===
+//
+// === extends
+// TODO: placer les Class dans la jsp
+// $orange_bouton: #e65224;
+// %btn-standard {
+//      height: 40px;
+//      line-height: 40px;
+//      padding: 0 24px;
+//      font-size: 1em;
+//      .veol & {
+//          border-radius: 50px;
+//      }
+//      .erdf & {
+//          border-radius: 3px;
+//      }
+//  }
+//  @mixin btn-positif($color,$color_hover, $bg_color) {//typo couleur sur un fond transparent
+//      color: $color;
+//      border: solid 1px $color;
+//      background-color: $bg_color;
+     
+//      &:hover {
+//          color: white;
+//          border: solid 1px $color_hover;
+//          background-color: $color_hover;
+//      }
+//  }
+// .btn {
+//      &:not(.dropdown-toggle):not(.btn-link):not(.btn-xs):not(.btn-sm):not(.btn-default):not(.btn-technique) {
+//           @extend %btn-standard;
+//      }
+//      &.btn-positif {
+
+//           // bouton en filigrane
+//           .veol & {
+//               @include btn-positif($orange_bouton, $orange_bouton, transparent);
+//           }
+//           // .erdf & {
+//           //     @include btn-positif($bleu_ciel_enedis, $bleu_ciel_enedis, transparent);
+//           // }
+//      }
+// }
+     
+// /== extends
+     
+// === variables   
+$hauteur-podium-seul: 419px;
+$hauteur-podium: $hauteur-podium-seul - 42px;
+/*
+.block_question_ranking
++ + .block_question_reponse // seulement pour le ranking par question
++ + + + .block_question
++ + .block_ranking
++ + + + .podium
+
+*/
+
+// 1. bloc question
+.block_question_ranking {
+     position: relative;
+     height: auto;
+     // entourer mon nom ou le groupe auquel j'appartiens :
+     span.mon-groupe {
+          // border: solid 3px $orange_fonce_edf;
+          // padding: .25em .5em .1em .5em;
+          // border-radius: 20px;
+          // display: inline-block;
+          color: $orange_fonce_edf;
+     }
+     // mais tenir compte des listes dans le résultat horizontal :
+     // .horizontal span.mon-groupe {
+     //      margin-left: calc(-.5em - 3px);//c'est rigolo et ça marche !
+     // }
+     .intranet-live-event-portlet-projection & {
+          // pour coller à la case dans projection :
+          margin-right: -17px;
+          margin-bottom: -28px;
+          margin-left: -17px;
+          // ne rien entourer - ni mon nom ni mon groupe - sur l'écran de projection :
+          span.mon-groupe {
+               border-radius: 0;
+               padding: 0;
+               border: none;
+          }
+     }
+     .block_question_reponse {//cartouche bleu
+          position: relative;
+     }
+} 
+.block_ranking {
+     position: relative;
+     //background-color: $bleu_clair_edf;
+     background-color: white;
+     height: $hauteur-podium-seul;
+     min-height: $hauteur-podium-seul;
+}
+
+// 2. bloc podium
+$largeur_col_1: 321px;
+$largeur_col_2: 282px;
+$largeur_col_3: 282px;
+$left_col_1: 244px;
+$left_col_2: 2px;
+$left_col_3: 527px;
+$coef_reduction: 0.84;
+
+// 2a.bloc podium vertical
+.block_ranking:not(.horizontal) {
+     .podium {
+          margin: 0 auto;
+          width: 808px;
+          height: inherit;
+          position: relative;
+          overflow: hidden;
+          h3,p {
+               word-wrap: break-word;//coupe les noms trop longs
+          }
+          .winner {
+               position: absolute;
+               width: inherit;
+               height: 245px;
+               z-index: 8;
+               transition: all 0.5s ease-in-out;
+               .winner-inner {
+                    width: inherit;
+                    height: inherit;
+                    padding: 20px 30px;
+                    display: table-cell;
+                    text-align:center;
+               }
+               &.perso .winner-inner {
+                    vertical-align:bottom;
+                    h3 {
+                         font-size: 20px !important;//surcharge un #
+                    }
+               }
+               &:not(.perso) .winner-inner {
+                    vertical-align: middle;
+                    h3 {
+                         font-size: 30px !important;//surcharge un #
+                    }
+               }
+               .chiffre-du-podium {
+                    width: 100%;
+                    height: 100%;//donc égale à largeur
+                    position: absolute;
+                    top: 235px;
+                    opacity: 0;
+                    background-size: 90% auto;
+                    transition: all 0.4s ease-in;
+                    transition-delay: 2.5s;
+                    transform: rotate(-90deg);
+               }
+               &.descend {
+                    transform: translateY(300px);//285px
+                    .chiffre-du-podium {
+                         transform: rotate(0deg);
+                         opacity: 1;
+                    }
+               }
+               h3 {
+                    width: inherit;
+                    color: $bleu_clair_edf;
+                    display: block;
+                    text-align: center;
+                    height: auto;
+                    width:auto;
+                    //font-size: 40px;
+                    font-weight: bold;
+               }
+               &.perso {
+                    h3 {
+                         font-size: 20px !important;
+                         margin-bottom:5px;
+                    }
+               } 
+          }
+          .podium-block {
+               position: absolute;
+               height: inherit;
+               overflow: hidden;
+               img.podium-block-img {
+                    position: absolute;
+                    transition: all 0.5s ease-in-out;
+                    &.monte {
+                         transform: translateY(-915px);
+                    }
+               }
+               &.block-1 {
+                    left: $left_col_1;
+                    width: $largeur_col_1;
+                    .winner {
+                         top: -312px;
+                         transition-delay: 1.8s;
+                         &:not(.perso) {
+                              background: url("/o/intranet-live-event-portlet/images/laurier.png") center 15px no-repeat;
+                              background-size: 270px auto;
+                         }
+                         .chiffre-du-podium {
+                              background: url("/o/intranet-live-event-portlet/images/chiffres-01.png") center 20% no-repeat;
+                              z-index: 4;
+                             // left: 87px;
+                         }
+                    }
+                    img.podium-block-img {
+                         bottom: -1375px;
+                         transition-delay: 0s;
+                         z-index: 1;
+                    }
+                    .bas-du-podium {
+                         background: url("/o/intranet-live-event-portlet/images/bas-du-podium-chiffre-1.png") 0 0 no-repeat;
+                         z-index: 2;
+                    }
+               }
+               &.block-2 {
+                    left: $left_col_2;
+                    width: $largeur_col_2;
+                    .winner {
+                         top: -267px;
+                         transition-delay: 2.2s;
+                         .chiffre-du-podium {
+                              background: url("/o/intranet-live-event-portlet/images/chiffres-02.png") 65% -10% no-repeat;
+                              z-index: 4;
+                             // left: 68px;
+                         }
+                    }
+                    img.podium-block-img {
+                         bottom: -1375px;
+                         transition-delay: 0.8s;
+                         z-index:3;
+                    }
+                    .bas-du-podium {
+                         background: url("/o/intranet-live-event-portlet/images/bas-du-podium-chiffre-2.png") -1px 0 no-repeat;
+                         z-index: 4;
+                    }
+               }
+               &.block-3 {
+                    left: $left_col_3;
+                    width: $largeur_col_3;
+                    .winner {
+                         top: -230px;
+                         right: 0;
+                         transition-delay: 2.4s;
+                         .chiffre-du-podium {
+                              background: url("/o/intranet-live-event-portlet/images/chiffres-03.png") 33% -22% no-repeat;
+                              z-index: 6;
+                         }
+                    }
+                    img.podium-block-img {
+                         bottom: -1370px;
+                         right: 0;
+                         transition-delay: 1.6s;
+                         z-index: 5;
+                    }
+                    .bas-du-podium {
+                         background: url("/o/intranet-live-event-portlet/images/bas-du-podium-chiffre-3.png") 0 0 no-repeat;
+                         z-index: 6;
+                    }
+               }
+          }
+          .bas-du-podium {
+               width: 100%;
+               height: 90px;
+               position: absolute;
+               bottom: -40px;
+               left: 0;
+               z-index: 5;
+          }
+     }
+
+     // 3. bloc podium avec une colonne gauche (ecran "mon placement")
+     .mon-classement {
+          float: left;
+          width: 0%;
+          opacity:0;
+          height: inherit;
+          background: url("/o/intranet-live-event-portlet/images/bulle-demi.png") center 170px no-repeat;
+          transition: all 0.5s ease-in-out;
+          transition-delay: 1.5s;
+          &.deforme {
+               width: 26%;
+               opacity:1;
+          }
+          & ~ .podium {
+               float: left;
+               width: 73%;
+               margin: 0;
+               margin-left: 1%;
+               .podium-block {
+                    img.podium-block-img {
+                         width: 100%;
+                         &.monte {
+                              transform: translateY(-1020px);
+                         }
+                    }
+                    &.block-1 {
+                         left: $coef_reduction * $left_col_1;
+                         width: $coef_reduction * $largeur_col_1;
+                         .chiffre-du-podium {
+                              background-size: 45% auto !important;
+                         }
+                    }
+                    &.block-2 {
+                         left: $coef_reduction * $left_col_2;
+                         width: $coef_reduction * $largeur_col_2;
+                         .chiffre-du-podium {
+                              background-size: 60% auto !important;
+                         }
+                    }
+                    &.block-3 {
+                         left: $coef_reduction * $left_col_3;
+                         width: $coef_reduction * $largeur_col_3;
+                         .chiffre-du-podium {
+                              background-size: 60% auto !important;
+                         }
+                    }
+               }
+          }
+          .mon-classement-inner {//pour centrer verticalement le classement de l'avatar
+               display: table-cell;
+               vertical-align: middle;
+               height:inherit;
+               width:inherit;
+               text-align: center;
+               p {//text "mon classement"
+                    color: $bleu_clair_edf;
+                    font-weight: bold;
+                    font-size: 20px;
+                    margin-top: 6px;
+                    
+               }
+               h3 {
+                    color: $bleu_clair_edf;
+                    font-size: 60px !important;
+                    font-weight: bold;
+               }
+          }
+     }
+} 
+
+// 2b.bloc podium horizontal
+.block_ranking.horizontal {
+     padding-top: 20px;
+     height: auto;
+     min-height: $hauteur-podium-seul;
+     .podium {
+          position: relative;
+          img.podium-block-img {
+               display: none;
+          }
+          h3 {
+               color: $bleu_clair_edf;
+               text-align: left !important;
+               font-weight: bold;
+               display: inline-block;
+          }
+          .podium-block {
+               width: 33% !important;
+               text-align: center;
+               position: absolute;
+               //border-bottom: solid 1px $gris_ombre;
+               .winner {
+                    padding: 20px 20px 20px 50px;
+                    margin-left: 20px;
+                    background-size: auto 40px !important;
+                    transition: all 0.5s ease-in-out;
+                    position: relative;
+                    bottom: -500px;
+                    &.descend {
+                         transform: translateY(500px);
+                    }
+               }
+               &.block-1 {
+                    left: 33%;
+                    top: 0;
+                    .winner {
+                         transition-delay: 0.5s;
+                         background: url("/o/intranet-live-event-portlet/images/hor-chiffre-1.png") 0 center no-repeat;
+                         background-size: 100px auto !important;
+                         padding: 40px 40px 40px 110px;
+                    }
+               }
+               &.block-2 {
+                    left: 0;
+                    top: 40px;
+                    .winner {
+                         transition-delay: 1s;
+                         background: url("/o/intranet-live-event-portlet/images/hor-chiffre-2.png") 9px center no-repeat;
+                         background-size: 80px auto !important;
+                         padding: 30px 30px 30px 110px;
+                         //margin-left: 28px;
+                    }
+               }
+               &.block-3 {
+                    left: 66%;
+                    top: 60px;
+                    .winner {
+                         transition-delay: 1.5s;
+                         background: url("/o/intranet-live-event-portlet/images/hor-chiffre-3.png") 18px center no-repeat;
+                         background-size: 60px auto !important;
+                         padding: 25px 25px 25px 110px;
+                         // margin-left: 38px;
+                    }
+               }
+          }
+     }
+     //TODO: refactorer ce code copié-collé :
+     .mon-classement {
+          float: left;
+          width: 0%;
+          height: inherit;
+          opacity:0;
+          //height: calc(100% - 20px);//a cause du padding-top
+          //background-image: url("/o/intranet-live-event-portlet/images/bulle-demi.png");
+          //background-repeat: no-repeat;
+          //background-position: -1000px 60px;
+          transition: all 0.5s ease-in-out;
+          transition-delay: 1.5s;
+          .mon-classement-inner {
+               transform: translateY(100px);
+               padding: 0 30px;
+               text-align: center;
+               h3,p {
+                    color: $bleu_clair_edf;
+                    font-weight: bold;
+               }
+               h3 {
+                    font-size: 60px !important;
+               }
+               p {
+                    font-size: 22px;
+               }
+          }
+          &.deforme {
+               width: 26%;
+              // background-position: center 60px;
+               opacity:1;
+          }
+          & ~ .podium {
+               float: left;
+               width: 73%;
+               margin: 0;
+               margin-left: 1%;
+          }
+     }
+     // /TODO
+} 
+
+ul.gagnants-list li {//puce pour la liste des gagnants
+     // list-style-type: circle !important;
+     // list-style-position: inside;
+     border-bottom: solid 1px #ccc;
+     padding: 4px 0 !important;
+     &:last-of-type {
+          border:none;
+     }
+}
+
+//classement sur écran administrateur :
+.intranet-live-event-portlet-presentation {
+     .classement {
+          text-align: center;
+          vertical-align: top !important;
+          .user-icon {
+               background-color: $bleu_fonce_edf;
+               span {
+                    color: $orange_clair_edf;
+                    font-weight: bold;
+                    font-size: 130%;
+               }
+          }
+          .user-icon-xxl {
+               height: 80px;
+               line-height: 90px;
+               width: 80px;
+          }
+     }
+}
+
+// selectionner un groupe :
+.choisir-groupe-submit-wrapper {
+     padding-right: 30px;
+}
+
+// === maquettes :
+
+// boutons specifiques pour le Quizz ? :
+.intranet-live-event-portlet-presentation {
+
+     .block_question_event .bandeau_top h3 {//TODO: changer pour tous les LE ?
+          position: relative;
+          top: 5px;
+     }
+} 
