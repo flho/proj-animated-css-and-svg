@@ -1,0 +1,27 @@
+// variable utilisée pour garder un ratio
+@media only screen and (min-width:415px) {
+     $facteur: 1.5;
+     .qr-code {// coupe le bord blanc du code : 
+		background-size: $facteur * 75px auto !important;
+		width: $facteur * 65px;
+		height: $facteur * 65px;
+		overflow: hidden;
+		display: inline-block;
+     }
+}
+
+// variables utilisées dans "calc"
+@media screen and (max-width: 768px) {
+     //sans menu de gauche :
+     $deux_bords: 60px; 
+     #refresh_wall {//nouveaux posts
+          width: calc(100% - #{$deux_bords});
+     }
+}
+@media screen and (min-width:769px) {
+     //avec menu de gauche :
+     $menu_et_cote_droit: 385px; 
+     #refresh_wall {//nouveaux posts
+          width: calc(100% - #{$menu_et_cote_droit});
+     }
+}
