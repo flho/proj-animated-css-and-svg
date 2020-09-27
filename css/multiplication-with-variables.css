@@ -1,0 +1,21 @@
+@media only screen and (min-width: 415px) {
+  .qr-code {
+    background-size: 112.5px auto !important;
+    width: 97.5px;
+    height: 97.5px;
+    overflow: hidden;
+    display: inline-block;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  #refresh_wall {
+    width: calc(100% - 60px);
+  }
+}
+
+@media screen and (min-width: 769px) {
+  #refresh_wall {
+    width: calc(100% - 385px);
+  }
+}

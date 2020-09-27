@@ -1,0 +1,15 @@
+img[class] {
+  border: solid 2px green;
+}
+
+img[alt] {
+  border: solid 6px red;
+}
+
+img[title] {
+  border: solid 6px aqua;
+}
+
+a[href]::after {
+  content: "(" attr(href) ")";
+}

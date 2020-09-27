@@ -1,0 +1,17 @@
+img[class] {// une image qui a une ”class” quelle soit elle
+    border: solid 2px green;
+    //:before et :after ne peuvent s'appliquer aux img
+    // &:after {
+    //     content:”class”
+    // }
+}
+img[alt] {// une image qui a un ”alt”
+    border: solid 6px red;
+}
+img[title] {// une image avec un ”title”
+    border: solid 6px aqua;
+}
+
+a[href]::after {
+    content: "("attr(href)")";
+}

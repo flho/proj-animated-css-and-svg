@@ -1,0 +1,75 @@
+.square {
+  width: 50px;
+  height: 50px;
+  background: orangered;
+  display: block;
+  animation: color 10s infinite both;
+}
+
+@keyframes color {
+  59.999% {
+    background: orangered;
+  }
+  60% {
+    background: teal;
+  }
+  69.999% {
+    background: teal;
+  }
+  70% {
+    background: orangered;
+  }
+}
+
+.score-notation {
+  font-weight: bold;
+  font-size: 100px;
+  animation: resultat 0.5s linear 0s 1 forwards;
+  transform-origin: left;
+  margin: 0;
+  height: 100px;
+  line-height: 100px;
+}
+
+@keyframes resultat {
+  0% {
+    color: black;
+    opacity: 0;
+    font-size: 20px;
+  }
+  50% {
+    color: #005bbb;
+  }
+  100% {
+    color: #fe5815;
+    font-size: 100px;
+    opacity: 1;
+    transform: scale(2);
+    transform: translateX(50%);
+    margin-left: -50px;
+  }
+}
+
+.reponses_list_etoile {
+  text-align: center;
+}
+
+.reponses_list_etoile span {
+  font-size: 2em;
+  cursor: pointer;
+}
+
+.reponses_list_etoile span.etoile {
+  color: grey;
+  font-size: 5em;
+  cursor: pointer;
+  transition-duration: 0.1s;
+}
+
+.reponses_list_etoile span.gold {
+  color: gold;
+}
+
+.reponses_list_etoile span.grey {
+  color: grey;
+}
